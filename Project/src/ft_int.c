@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:39:10 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/04/02 21:35:13 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/04/02 21:44:36 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	ft_print_nbr(long int n)
 	free(s);
 	return (len);
 }
+
 int	ft_num_len(unsigned	int num)
 {
 	int	len;
