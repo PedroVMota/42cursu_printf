@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 10:23:28 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/04/02 21:44:56 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/04/11 12:15:51 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,6 @@ int	ft_print_char(char c);
 int	ft_print_nbr(long int nbr);
 int	ft_print_hex(unsigned int num, const char format);
 int	ft_print_ptr(unsigned long long ptr_addr);
+int	ft_print_unsigned(unsigned int nbr);
+
 #endif
