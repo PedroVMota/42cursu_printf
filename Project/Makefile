@@ -14,37 +14,42 @@ CFLAGS = -Wall -Wextra -Werror
 SRCF = src
 SRC = ./$(SRCF)/ft_hex.c ./$(SRCF)/ft_int.c ./$(SRCF)/ft_print_chr.c ./$(SRCF)/ft_printf.c ./$(SRCF)/ft_addr.c
 OBJ = $(SRC:.c=.o)
-#SRC_BONUS = ./$(SRCF)/ft_
+SRC_BONUS = ./$(SRCF)/ft_plus.c
+BONUS_OBJ = $(SRC_BONUS:.c=.o)
 
-DEF_COLOR = \033[0;39m
-GRAY = \033[0;90m
-RED = \033[0;91m
-GREEN = \033[0;92m
-YELLOW = \033[0;93m
-BLUE = \033[0;94m
-MAGENTA = \033[0;95m
-CYAN = \033[0;96m
-WHITE = \033[0;97m
+
+# ===== colors
+
+ok = \033[32m
+err = \033[31m
+RESET_COLOR  = \e[m
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@printf "$(CYAN)Compiling for libft.a$(RESET)\n"
 	@make -C $(LIBFT_P) --no-print
-	@printf "$(MAGENTA)Creating printlibft.a$(RESET)\n"
+	@printf " [$(ok)OK$(RESET_COLOR)] Libft\n"
 	@cp -f $(LIBFT_P)libft.a $(NAME)
 	@ar rcs $(NAME) $(OBJ)
-	@printf "$(GREEN)Printf readdy to use$(WHITE)\n"
+	@printf " [$(ok)OK$(RESET_COLOR)] $(NAME)\n"
 
 %.o : %.c
+	@printf " [$(ok)OK$(RESET_COLOR)] $@\n"
 	@cc $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 
 clean:
-	@make clean -C $(LIBFT_P) --no-print
+	@printf " [$(ok)OK$(RESET_COLOR)] Object files deleted\n"
 	@rm -rf */*.o
 
 fclean: clean
-	@printf "$(RED)Removing all the library\n$(RESET)"
+	@printf " [$(ok)OK$(RESET_COLOR)] Files Deleted\n"
+	@make fclean -C $(LIBFT_P) --no-print
 	@rm -rf $(LIBFT_P)libft.a ./$(NAME)
+
+
+create: $(NAME) bonus
+	@cc -Wall -Wextra -Werror -I $(INCLUDE)  main.c $(NAME) -o program
+	./program
+	@rm program
 
 .PHONY:		all clean fclean re

@@ -6,15 +6,17 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 10:23:28 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/04/11 12:15:51 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:42:06 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+
 # include "libft.h"
 # include <stdarg.h>
 # include <stdint.h>
+
 // MAIN FUNCTION
 int	ft_printf(const char *format, ...);
 int	ft_print_str(char *str);

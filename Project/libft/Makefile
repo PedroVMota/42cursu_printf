@@ -30,31 +30,23 @@ LIB1 = ar -rcs
 SRCS	= 	$(shell ls src/*.c)
 OBJS = $(SRCS:.c=.o)
 
-DEF_COLOR = \033[0;39m
-GRAY = \033[0;90m
-RED = \033[0;91m
-GREEN = \033[0;92m
-YELLOW = \033[0;93m
-BLUE = \033[0;94m
-MAGENTA = \033[0;95m
-CYAN = \033[0;96m
-WHITE = \033[0;97m
+ok = \033[32m
+err = \033[31m
+RESET_COLOR  = \e[m
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-	@echo "$(BLUE)Making the $(NAME)$(WHITE)\r"
 	@$(LIB1) $(NAME) $(OBJS)
 
 %.o: %.c
+	@printf " [$(ok)OK$(RESET_COLOR)] $@\n"
 	@$(CC) $(CFLAGS) -I $(LIB_PATH) -c $< -o $(<:.c=.o)
 
 clean:
-	@echo  "$(RED)Removing Object files$(WHITE)"
 	@$(RM) $(OBJS)
 
 fclean:		clean
-	@echo "$(RED)Removing $(NAME)$(WHITE)"
 	@$(RM) $(NAME)
 
 re:			fclean all
